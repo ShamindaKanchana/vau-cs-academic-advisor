@@ -25,7 +25,7 @@ def user_input_handler(state: dict) -> dict:
     if response is None:
         raise ValueError("User input handler failed to return a response")
         
-    print(response)
+    print("\n\nAfter finishing the user input handler (first step) ...\n\n",response,"\n\n")
     return {
         **state,  # Include all previous state
         'user_input': user_input,  # Store the raw input
@@ -59,7 +59,7 @@ def subject_content_based(state: dict) -> dict:
     if response is None:
         raise ValueError("Subject content based failed to return a response")
         
-    print(response)
+    print("After finishing the subject content based (second step) based on the decison of user input...\n\n",response,"\n\n")
     
     # Return the updated state with the new response
     return {
@@ -71,7 +71,7 @@ def result_based_infor_extraction(state: dict) -> dict:
     extracted_data=llm.with_structured_output(ResultBased).invoke(result_based_infor_extraction_prompt(state["user_input"]))   
     if extracted_data is None:
         raise ValueError("Result based information extraction failed to return a response")
-    print(extracted_data)
+    print("\n\nAfter finishing the result based information extraction (second step) based on the decison of user input...\n\n",extracted_data,"\n\n")
     return {
         **state,
         "result_based_infor_extraction": extracted_data
@@ -87,7 +87,7 @@ def subject_information_retrieval(state: dict) -> dict:
     prompt=subject_information_retrieval_prompt(state["subject_content_based"].subjects,str(state["user_input"]))
     #print("User prompt is like :",prompt,"\n")
     user_info=retriever.query(prompt)
-    print(user_info)
+    print("\n\nAfter finishing the subject information retrieval (third step)...  \n\n",user_info,"\n\n")
     return {
         **state,
         "subject_information_retrieval": user_info

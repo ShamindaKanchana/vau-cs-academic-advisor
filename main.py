@@ -48,12 +48,12 @@ graph.set_entry_point("user_input_handler")
 app = graph.compile()
 
 if __name__ == "__main__":
-	test_set=["I have C pass for differential equations and B pass for Computer Science then how my results affect to industry "]
+	test_set=["I have C pass for differential equations and B pass for Computer Science then how my results affect to industry ? Also need to know for that results how for the next semesters can affect"]
 
 
 
 	for i in range(len(test_set)):
 		result = app.invoke({"user_input": test_set[i] }, {"recursion_limit": 20})
-		print(result)
+		print("\n\n\n***********Finally after finishing all the sates the final result be like :************\n\n",result,"\n\n\n*********************************")
 
 

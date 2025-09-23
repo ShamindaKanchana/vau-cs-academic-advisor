@@ -25,3 +25,4 @@ class ResultBased(BaseModel):
         ...,
         description="List of subject names and their respective grades "
     )
+    task_list: list[str] = Field(..., description="List of tasks that need to complete to give decision to user")
