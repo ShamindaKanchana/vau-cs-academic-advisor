@@ -13,7 +13,7 @@ from langgraph.graph import StateGraph
 
 load_dotenv() 
 
-from agents import user_input_handler,subject_content_based,subject_information_retrieval,result_based_infor_extraction
+from agents import user_input_handler,subject_content_based,subject_information_retrieval,result_based_infor_extraction,results_info_retrieval
 
 
 # Build the graph
@@ -26,6 +26,7 @@ graph.add_node("user_input_handler", user_input_handler)
 graph.add_node("subject_content_based", subject_content_based)
 graph.add_node("subject_information_retrieval", subject_information_retrieval)
 graph.add_node("result_based_infor_extraction", result_based_infor_extraction)
+graph.add_node("results_info_retrieval", results_info_retrieval)
 
 graph.add_edge("subject_content_based", END)
 
@@ -40,7 +41,8 @@ graph.add_conditional_edges(
 graph.add_edge("subject_content_based", "subject_information_retrieval")
 
 graph.add_edge("subject_information_retrieval", END)
-graph.add_edge("result_based_infor_extraction", END)
+graph.add_edge("result_based_infor_extraction", "results_info_retrieval")
+graph.add_edge("results_info_retrieval", END)
 
 graph.set_entry_point("user_input_handler")
 

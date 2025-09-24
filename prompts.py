@@ -19,7 +19,7 @@ def subject_content_based_prompt(user_input: str):
     return SUBJECT_CONTENT_BASED_PROMPT
 
 
-
+#If the user input is result_based then this state will be triggered
 def result_based_infor_extraction_prompt(user_input: str):
     RESULT_BASED_INFORMATION_EXTRACTION_PROMPT = f""" The given user input you need to extract the subject name and grade 
     with maintaining the order. 
@@ -31,6 +31,20 @@ def result_based_infor_extraction_prompt(user_input: str):
     
     """
     return RESULT_BASED_INFORMATION_EXTRACTION_PROMPT
+
+
+#After resault xtraction the input comes to this state
+from states import SubjectGrade
+def results_info_retrieval_prompt(subjects_grades: list[SubjectGrade],current_task: str):
+    RESULTS_INFO_RETRIEVAL_PROMPT = f""" You are an advicer who able to provide valueble information to the students who provide their subject grades. 
+    You need look at the results provided and based on that you need to give advice or information to the student. You also can  access the database if you need 
+    any information need from that. (Each of module information,credit_value info)
+    
+    The subjects grades are {subjects_grades} 
+    The current task is {current_task}
+    
+    """
+    return RESULTS_INFO_RETRIEVAL_PROMPT
     
 
 def subject_information_retrieval_prompt(subjects: list[str],userinput: str):

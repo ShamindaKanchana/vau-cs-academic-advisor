@@ -1,7 +1,7 @@
-from states import UserInput,SubjectContentBased,ResultBased
+from states import UserInput,SubjectContentBased,ResultBased,ResultsInfoRetrieval,SubjectGrade
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt
+from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt,results_info_retrieval_prompt
 from langchain_core.prompts import ChatPromptTemplate
 import os 
 
@@ -76,10 +76,39 @@ def result_based_infor_extraction(state: dict) -> dict:
         **state,
         "result_based_infor_extraction": extracted_data
     }   
-    
-
 
 from database_supporter import DatabaseRetriever
+
+def results_info_retrieval(state: dict) -> dict:
+    
+    final_info_list=[]
+    print("\n\nAfter finishing the results extraction info retrieval (third step)... \n\n")
+    print("###############################################\n\n")
+    rounds=len(state["result_based_infor_extraction"].task_list)
+    for i in range(rounds):
+        print("Starting round ",i+1,"__________________________________________________________________\n\n")
+        task_list=state["result_based_infor_extraction"].task_list
+        subject_grades=state["result_based_infor_extraction"].subject_grades
+        current_task=task_list[i]
+        print("Current task  ",current_task,"processing...\n")
+        database_request_query=results_info_retrieval_prompt(subject_grades,current_task)
+        final_info=DatabaseRetriever(["modules"]).query(database_request_query)
+        print("Result provded from llama index for current task:",final_info,"\n\n")
+        print("__________________________________________________________________\n\n")
+        print(final_info)
+        print("###################################################\n\n")
+        
+        if final_info is None:
+            raise ValueError("Results information retrieval failed to return a response")
+        final_info_list.append(final_info)
+        print("Final info list:",final_info_list,"\n\n")
+    return {
+        **state,
+        "results_info_retrieval": final_info_list
+    }
+
+
+
 def subject_information_retrieval(state: dict) -> dict:
     retriever = DatabaseRetriever(["modules"])
     
