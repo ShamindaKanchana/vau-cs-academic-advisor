@@ -1,7 +1,7 @@
 from states import UserInput,SubjectContentBased,ResultBased,ResultsInfoRetrieval,SubjectGrade,AcademicAdvice_ready
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt,results_info_retrieval_prompt,academic_advice_ready_prompt
+from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt,results_info_retrieval_prompt,academic_advice_ready_prompt,general_information_prompt
 from langchain_core.prompts import ChatPromptTemplate
 import os 
 
@@ -93,15 +93,16 @@ def results_info_retrieval(state: dict) -> dict:
         print("Current task  ",current_task,"processing...\n")
         database_request_query=results_info_retrieval_prompt(subject_grades,current_task)
         final_info=DatabaseRetriever(["modules"]).query(database_request_query)
-        print("Result provded from llama index for current task:",final_info,"\n\n")
+        print("Result provded from llama index for current task:\n\n",final_info,"\n\n")
         print("__________________________________________________________________\n\n")
-        print(final_info)
+        
         print("###################################################\n\n")
         
         if final_info is None:
             raise ValueError("Results information retrieval failed to return a response")
         final_info_list.append(final_info)
         print("Final info list:",final_info_list,"\n\n")
+
     return {
         **state,
         "results_info_retrieval": final_info_list
@@ -136,4 +137,16 @@ def academic_advice_ready(state: dict) -> dict:
 
         
 
+    
+def general_information_provider(state: dict) -> dict:
+    retriever = DatabaseRetriever(["modules"])
+    general_info=retriever.query(general_information_prompt(state["user_input"]))
+    if general_info is None:
+        raise ValueError("General information provider failed to return a response")
+    print("\n\nAfter finishing the general information provider (second step)...  \n\n",general_info,"\n\n")
+    return {
+        **state,
+        "general_information_provider": general_info
+    }
+            
     

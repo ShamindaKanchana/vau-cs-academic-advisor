@@ -2,10 +2,13 @@ def user_input_handler_prompt(user_input: str):
     INPUT_HANDLER_PROMPT = f"""
     You are an agent who able to identify the user requirements and based on that you will return the structured format. FOr i case of to determine whether the user request 
     is Subject content ot result based , the result_based requests also with the subjets and grades both but the Subject content based
-    only with the subjects. So the user input is {user_input} and you need to  return the output based on the below list contain types:
+    only with the subjects. In user input there no any subject/module names mentioned then it will belongs  to below 4 general_information category
+    
+    . So the user input is " {user_input}" and you need to  return the output based on the below list contain types:
     1. result_based
     2. Subject_content_based
     3. academic_advice
+    4. general_information
     """
     return INPUT_HANDLER_PROMPT
 
@@ -65,3 +68,11 @@ def academic_advice_ready_prompt(user_input: str):
     the user input is {user_input}
     """
     return ACADEMIC_ADVICE_READY_PROMPT    
+
+
+def general_information_prompt(user_input: str):
+    GENERAL_INFORMATION_PROMPT = f""" Based on the user input provide the information user need
+    
+    the user input is {user_input} """
+
+    return GENERAL_INFORMATION_PROMPT    

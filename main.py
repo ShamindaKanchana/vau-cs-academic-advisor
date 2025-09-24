@@ -13,7 +13,7 @@ from langgraph.graph import StateGraph
 
 load_dotenv() 
 
-from agents import user_input_handler,subject_content_based,subject_information_retrieval,result_based_infor_extraction,results_info_retrieval,academic_advice_ready
+from agents import user_input_handler,subject_content_based,subject_information_retrieval,result_based_infor_extraction,results_info_retrieval,academic_advice_ready,general_information_provider
 
 
 # Build the graph
@@ -28,6 +28,7 @@ graph.add_node("subject_information_retrieval", subject_information_retrieval)
 graph.add_node("result_based_infor_extraction", result_based_infor_extraction)
 graph.add_node("results_info_retrieval", results_info_retrieval)
 graph.add_node("academic_advice_ready", academic_advice_ready)
+graph.add_node("general_information_provider", general_information_provider)
 
 graph.add_edge("subject_content_based", END)
 
@@ -39,6 +40,8 @@ graph.add_conditional_edges(
               if x["user_input_handler"].type == "result_based"
               else "academic_advice_ready"
               if x["user_input_handler"].type == "academic_advice"
+              else "general_information_provider"
+              if x["user_input_handler"].type == "general_information"
               else END)
 )
 graph.add_edge("subject_content_based", "subject_information_retrieval")
@@ -47,6 +50,7 @@ graph.add_edge("subject_information_retrieval", END)
 graph.add_edge("result_based_infor_extraction", "results_info_retrieval")
 graph.add_edge("results_info_retrieval", END)
 graph.add_edge("academic_advice_ready", END)
+graph.add_edge("general_information_provider", END)
 
 graph.set_entry_point("user_input_handler")
 
@@ -54,7 +58,7 @@ graph.set_entry_point("user_input_handler")
 app = graph.compile()
 
 if __name__ == "__main__":
-	test_set=["I want to know about Differential equation, Statistics and Computer Science each of subjects how impact to industry and brief information about those"]
+	test_set=["First semester each of subjects credits i need to know "]
 
 
 #"I have C pass for differential equations and B pass for Computer Science then how my results affect to industry ? Also need to know for that results how for the next semesters can affect"
