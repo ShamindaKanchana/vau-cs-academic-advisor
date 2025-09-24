@@ -31,3 +31,9 @@ class ResultBased(BaseModel):
 
 class ResultsInfoRetrieval(BaseModel):
     results_info: list[str] = Field(..., description="Based on the results and the task provide valuble information")
+
+
+class AcademicAdvice_ready(BaseModel):
+    subjects: list[str] = Field(..., description="List of subjects")
+    doubts_topics: list[str] = Field(..., description="List of doubts  or topics the student having for some area. If user have more doubts or topics like paragraph of different things to ask then you can list over those else you can get as single topic or doubt.")
+

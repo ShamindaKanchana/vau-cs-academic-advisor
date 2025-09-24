@@ -1,7 +1,7 @@
-from states import UserInput,SubjectContentBased,ResultBased,ResultsInfoRetrieval,SubjectGrade
+from states import UserInput,SubjectContentBased,ResultBased,ResultsInfoRetrieval,SubjectGrade,AcademicAdvice_ready
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt,results_info_retrieval_prompt
+from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt,results_info_retrieval_prompt,academic_advice_ready_prompt
 from langchain_core.prompts import ChatPromptTemplate
 import os 
 
@@ -121,5 +121,19 @@ def subject_information_retrieval(state: dict) -> dict:
         **state,
         "subject_information_retrieval": user_info
     }
+
+
+def academic_advice_ready(state: dict) -> dict:
+    needed_info=llm.with_structured_output(AcademicAdvice_ready).invoke(academic_advice_ready_prompt(state["user_input"]))
+    if needed_info is None:
+        raise ValueError("Academic advice ready failed to return a response")
+    print("\n\nUser input based on the academic advice so go with academic based state... \n\n")
+    print("Academic advice ready state:",needed_info,"\n\n")
+    return {
+        **state,
+        "academic_advice_ready": needed_info
+    }
+
+        
 
     

@@ -1,7 +1,8 @@
 def user_input_handler_prompt(user_input: str):
     INPUT_HANDLER_PROMPT = f"""
-    You are an agent who able to identify the user requirements and based on that you will return the structured format. So the 
-    user input is {user_input} and you need to  return the output based on the below list contain types:
+    You are an agent who able to identify the user requirements and based on that you will return the structured format. FOr i case of to determine whether the user request 
+    is Subject content ot result based , the result_based requests also with the subjets and grades both but the Subject content based
+    only with the subjects. So the user input is {user_input} and you need to  return the output based on the below list contain types:
     1. result_based
     2. Subject_content_based
     3. academic_advice
@@ -38,11 +39,12 @@ from states import SubjectGrade
 def results_info_retrieval_prompt(subjects_grades: list[SubjectGrade],current_task: str):
     RESULTS_INFO_RETRIEVAL_PROMPT = f""" You are an advicer who able to provide valueble information to the students who provide their subject grades. 
     You need look at the results provided and based on that you need to give advice or information to the student. You also can  access the database if you need 
-    any information need from that. (Each of module information,credit_value info)
+    any information need from that. (Each of module description,credit_value info). So seeing the contents provide most valueble brief information to the student.
     
     The subjects grades are {subjects_grades} 
     The current task is {current_task}
     
+
     """
     return RESULTS_INFO_RETRIEVAL_PROMPT
     
@@ -56,3 +58,10 @@ def subject_information_retrieval_prompt(subjects: list[str],userinput: str):
     """
     return SUBJECT_INFORMATION_RETRIEVAL_PROMPT
     
+
+def academic_advice_ready_prompt(user_input: str):
+    ACADEMIC_ADVICE_READY_PROMPT = f"""For the requested input you need to identify the subjects that user have doubts and if the inut is more large then can make sub topics/doubts
+    
+    the user input is {user_input}
+    """
+    return ACADEMIC_ADVICE_READY_PROMPT    
