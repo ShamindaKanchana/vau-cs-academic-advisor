@@ -1,7 +1,7 @@
-from states import UserInput,SubjectContentBased,ResultBased,ResultsInfoRetrieval,SubjectGrade,AcademicAdvice_ready
+from states import UserInput,SubjectContentBased,ResultBased,ResultsInfoRetrieval,SubjectGrade,AcademicAdvice_ready,Final_user_response
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt,results_info_retrieval_prompt,academic_advice_ready_prompt,general_information_prompt
+from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt,results_info_retrieval_prompt,academic_advice_ready_prompt,general_information_prompt,final_user_response_prompt
 from langchain_core.prompts import ChatPromptTemplate
 import os 
 
@@ -149,4 +149,19 @@ def general_information_provider(state: dict) -> dict:
         "general_information_provider": general_info
     }
             
-    
+
+
+
+
+
+def final_user_response(state: dict) -> str:
+    user_input=state["user_input"]
+    states=str(state)
+    print("Entering to final state..................\n\n")
+    final_response=llm.with_structured_output(Final_user_response).invoke(final_user_response_prompt(user_input,states))
+    if final_response is None:
+        raise ValueError("Final user response failed to return a response")
+    print("\n\nAfter making the cleaned reponse###############  \n\n",final_response,"\n\n")
+
+
+    return final_response.final_response

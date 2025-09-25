@@ -53,7 +53,8 @@ def results_info_retrieval_prompt(subjects_grades: list[SubjectGrade],current_ta
     
 
 def subject_information_retrieval_prompt(subjects: list[str],userinput: str):
-    SUBJECT_INFORMATION_RETRIEVAL_PROMPT = f""" You are an agent who able to find the information from the database based on the user subjects. 
+    SUBJECT_INFORMATION_RETRIEVAL_PROMPT = f""" You are an agent who able to find the information from the 
+    database based on the user subjects. 
     the subjects are {subjects} 
     User wants to know {userinput}.
 
@@ -63,7 +64,8 @@ def subject_information_retrieval_prompt(subjects: list[str],userinput: str):
     
 
 def academic_advice_ready_prompt(user_input: str):
-    ACADEMIC_ADVICE_READY_PROMPT = f"""For the requested input you need to identify the subjects that user have doubts and if the inut is more large then can make sub topics/doubts
+    ACADEMIC_ADVICE_READY_PROMPT = f"""For the requested input you need to identify the subjects that user have
+     doubts and if the inut is more large then can make sub topics/doubts
     
     the user input is {user_input}
     """
@@ -76,3 +78,19 @@ def general_information_prompt(user_input: str):
     the user input is {user_input} """
 
     return GENERAL_INFORMATION_PROMPT    
+
+
+def final_user_response_prompt(user_input: str,final_state: str):
+    FINAL_USER_RESPONSE_PROMPT = f"""
+    You are an agent who can provide the better human reponse based on the user input and the states until reach the goal. 
+    We having the states since the user given the input and until reach the expected results. Normally the found result will exist in the 
+    last state. SO I think when seeing the states results yu can identify the user needs because  you also have the user entered input. 
+    
+    Your task is to provide the final response to the user.
+    
+    the user input is:  {user_input} and 
+    
+    states until reach the final state: {final_state}
+    """
+    return FINAL_USER_RESPONSE_PROMPT
+
