@@ -17,7 +17,7 @@ const Chat = () => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
@@ -32,16 +32,43 @@ const Chat = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot response after a delay
-    setTimeout(() => {
-      const botResponse = {
+    try {
+      const response = await fetch('http://localhost:5000/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: inputValue })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      if (data.status === 'success') {
+        const botResponse = {
+          id: messages.length + 2,
+          text: data.response,
+          sender: 'bot'
+        };
+        setMessages(prev => [...prev, botResponse]);
+      } else {
+        throw new Error(data.message || 'Failed to get a valid response from the server');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      const errorMessage = {
         id: messages.length + 2,
-        text: `I received: "${inputValue}"\n(This is a dummy response. The actual API will be integrated later.)`,
-        sender: 'bot'
+        text: `Sorry, I encountered an error: ${error.message}`,
+        sender: 'bot',
+        isError: true
       };
-      setMessages(prev => [...prev, botResponse]);
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsTyping(false);
-    }, 1000);
+    }
   };
 
   const handleClearChat = () => {
