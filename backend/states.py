@@ -40,3 +40,7 @@ class AcademicAdvice_ready(BaseModel):
 
 class Final_user_response(BaseModel):
     final_response: str = Field(..., description="Final response to user")
+
+
+class Shit(BaseModel):
+    final_response: str = Field(..., description="Final response to user") 

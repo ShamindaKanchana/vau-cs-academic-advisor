@@ -1,4 +1,4 @@
-from states import UserInput,SubjectContentBased,ResultBased,ResultsInfoRetrieval,SubjectGrade,AcademicAdvice_ready,Final_user_response
+from states import UserInput,SubjectContentBased,ResultBased,ResultsInfoRetrieval,SubjectGrade,AcademicAdvice_ready,Final_user_response,Shit
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from prompts import user_input_handler_prompt,subject_content_based_prompt,subject_information_retrieval_prompt,result_based_infor_extraction_prompt,results_info_retrieval_prompt,academic_advice_ready_prompt,general_information_prompt,final_user_response_prompt
@@ -165,3 +165,6 @@ def final_user_response(state: dict) -> str:
 
 
     return final_response.final_response
+
+def shit_manager(state: dict) -> str:
+    return "Dont ask  shitty questions"   

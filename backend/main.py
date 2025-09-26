@@ -15,7 +15,7 @@ from langgraph.graph import StateGraph
 
 load_dotenv() 
 
-from agents import user_input_handler, subject_content_based, subject_information_retrieval, result_based_infor_extraction, results_info_retrieval, academic_advice_ready, general_information_provider, final_user_response
+from agents import user_input_handler, subject_content_based, subject_information_retrieval, result_based_infor_extraction, results_info_retrieval, academic_advice_ready, general_information_provider, final_user_response,shit_manager
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -41,8 +41,12 @@ graph.add_node("results_info_retrieval", results_info_retrieval)
 graph.add_node("academic_advice_ready", academic_advice_ready)
 graph.add_node("general_information_provider", general_information_provider)
 graph.add_node("final_user_response", final_user_response)
+graph.add_node("shit_manager", shit_manager)
+
 
 graph.add_edge("subject_content_based", END)
+
+
 
 graph.add_conditional_edges(
     "user_input_handler",
@@ -54,6 +58,8 @@ graph.add_conditional_edges(
               if x["user_input_handler"].type == "academic_advice"
               else "general_information_provider"
               if x["user_input_handler"].type == "general_information"
+              else "shit_manager"
+              if x["user_input_handler"].type == "shit"
               else END)
 )
 graph.add_edge("subject_content_based", "subject_information_retrieval")
@@ -68,6 +74,7 @@ graph.add_edge("academic_advice_ready", "final_user_response")
 graph.add_edge("general_information_provider", "final_user_response")
 
 graph.add_edge("final_user_response", END)
+graph.add_edge("shit_manager", END)
 
 # Set the entry point for the graph
 graph.set_entry_point("user_input_handler")
