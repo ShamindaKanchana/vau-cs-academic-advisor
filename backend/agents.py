@@ -71,6 +71,8 @@ def result_based_infor_extraction(state: dict) -> dict:
     extracted_data=llm.with_structured_output(ResultBased).invoke(result_based_infor_extraction_prompt(state["user_input"]))   
     if extracted_data is None:
         raise ValueError("Result based information extraction failed to return a response")
+    
+
     print("\n\nAfter finishing the result based information extraction (second step) based on the decison of user input...\n\n",extracted_data,"\n\n")
     return {
         **state,
@@ -116,11 +118,19 @@ def subject_information_retrieval(state: dict) -> dict:
     print("States ##########################",str(state))
     prompt=subject_information_retrieval_prompt(state["subject_content_based"].subjects,str(state["user_input"]))
     #print("User prompt is like :",prompt,"\n")
-    user_info=retriever.query(prompt)
+
+    user_info=retriever.query(prompt,raw=True)
+
     print("\n\nAfter finishing the subject information retrieval (third step)...  \n\n",user_info,"\n\n")
+    user_info_=""
+    if not user_info or 'result' not in user_info or not user_info['result']:
+        print("\n....................No results found in database\n")
+        user_info_ = "I couldn't find any information about the requested module. Could you please provide more details or check the module name?"
+    else:
+        user_info_ = user_info['result']
     return {
         **state,
-        "subject_information_retrieval": user_info
+        "subject_information_retrieval": user_info_
     }
 
 
@@ -138,16 +148,13 @@ def academic_advice_ready(state: dict) -> dict:
         
 
     
-def general_information_provider(state: dict) -> dict:
+def general_information_provider(state: dict) -> str    :
     retriever = DatabaseRetriever(["modules"])
-    general_info=retriever.query(general_information_prompt(state["user_input"]))
+    general_info=retriever.query(general_information_prompt(state["user_input"]),raw=True)
     if general_info is None:
         raise ValueError("General information provider failed to return a response")
     print("\n\nAfter finishing the general information provider (second step)...  \n\n",general_info,"\n\n")
-    return {
-        **state,
-        "general_information_provider": general_info
-    }
+    return general_info['result']
             
 
 
@@ -158,6 +165,7 @@ def final_user_response(state: dict) -> str:
     user_input=state["user_input"]
     states=str(state)
     print("Entering to final state..................\n\n")
+    
     final_response=llm.with_structured_output(Final_user_response).invoke(final_user_response_prompt(user_input,states))
     if final_response is None:
         raise ValueError("Final user response failed to return a response")
