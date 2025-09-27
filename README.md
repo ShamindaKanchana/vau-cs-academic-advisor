@@ -24,10 +24,17 @@ VAU-CS Academic Advisor is an intelligent chatbot system designed to assist stud
 
 ### Backend (Python/Flask)
 - **API Layer**: RESTful endpoints for chat functionality
-- **State Management**: LangGraph for managing conversation state
-- **AI Integration**: Google Gemini for natural language understanding
-- **Database**: MySQL with SQLAlchemy ORM
-- **Caching**: LlamaIndex for efficient querying
+- **State Management**: LangGraph for managing complex conversation flows and state transitions
+- **AI Integration**: 
+  - Google Gemini for natural language understanding and generation
+  - LangChain framework for building and chaining AI components
+- **Database**: 
+  - MySQL with SQLAlchemy ORM for structured data storage
+  - LlamaIndex for efficient vector-based querying and retrieval
+- **Key Technologies**:
+  - **LangGraph**: Manages the conversation state machine, handling different conversation paths and maintaining context
+  - **LlamaIndex**: Powers the semantic search and retrieval of academic content with vector embeddings
+  - **SQLAlchemy**: ORM for database interactions and schema management
 
 ### Data Flow
 1. User sends message → Frontend → Backend API
@@ -137,24 +144,33 @@ frontend/
    - User messages are sent to the backend API
    - The system classifies the query type (subject content, results, general info)
 
-2. **State Management**:
-   - LangGraph manages the conversation flow
-   - Different agents handle specific types of queries
-   - State is maintained throughout the conversation
+2. **State Management with LangGraph**:
+   - LangGraph orchestrates the conversation flow through a state machine
+   - Different nodes in the graph handle specific query types:
+     - `user_input_handler`: Routes queries to appropriate handlers
+     - `subject_content_based`: Handles course content inquiries
+     - `result_based_infor_extraction`: Processes result-related queries
+     - `academic_advice_ready`: Manages academic guidance requests
+   - State is maintained and transformed through the conversation
+   - Conditional edges determine the flow based on query analysis
+
+3. **Information Retrieval with LlamaIndex**:
+   - Converts academic content into vector embeddings for semantic search
+   - Enables efficient similarity-based retrieval of course materials
+   - Handles complex queries by understanding the semantic meaning
+   - Caches frequently accessed data for improved performance
 
 3. **Response Generation**:
    - Relevant information is retrieved from the database
    - AI generates a natural language response
    - Response is formatted with markdown for rich display
 
-## 📝 License
-[Specify your license here]
 
 ## 🤝 Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📧 Contact
-[Your contact information]
+shamindakanchana@gmail.com
 
 ---
 
