@@ -148,13 +148,16 @@ def academic_advice_ready(state: dict) -> dict:
         
 
     
-def general_information_provider(state: dict) -> str    :
+def general_information_provider(state: dict) -> dict   :
     retriever = DatabaseRetriever(["modules"])
-    general_info=retriever.query(general_information_prompt(state["user_input"]),raw=True)
+    general_info=retriever.query(general_information_prompt(state["user_input"]))
     if general_info is None:
         raise ValueError("General information provider failed to return a response")
     print("\n\nAfter finishing the general information provider (second step)...  \n\n",general_info,"\n\n")
-    return general_info['result']
+    return {
+        **state,
+        "general_information_provider": general_info
+    }
             
 
 
@@ -162,7 +165,10 @@ def general_information_provider(state: dict) -> str    :
 
 
 def final_user_response(state: dict) -> str:
+    if state['user_input'] is None:
+        raise ValueError("No user input found in state. Make sure user_input_handler runs first.")
     user_input=state["user_input"]
+    
     states=str(state)
     print("Entering to final state..................\n\n")
     
