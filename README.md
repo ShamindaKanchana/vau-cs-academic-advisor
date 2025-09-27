@@ -43,6 +43,14 @@ VAU-CS Academic Advisor is an intelligent chatbot system designed to assist stud
 4. Response is generated and formatted with markdown
 5. Frontend renders the markdown response
 
+
+## 🖼️ Screenshots
+
+![Chat UI](demo.png)
+
+*(Example interaction with the Academic Advisor UI)*
+
+
 ## 🚀 Getting Started
 
 ### Prerequisites
