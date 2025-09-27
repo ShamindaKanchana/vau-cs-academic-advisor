@@ -1,5 +1,28 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import '../styles/Chat.css';
+
+// Message component to handle both user and bot messages
+const Message = ({ text, sender }) => {
+  return (
+    <div className={`message ${sender}`}>
+      <div className="message-avatar">
+        {sender === 'user' ? (
+          <span className="material-icons">person</span>
+        ) : (
+          <span className="material-icons">smart_toy</span>
+        )}
+      </div>
+      <div className="message-content">
+        {sender === 'bot' ? (
+          <ReactMarkdown>{text}</ReactMarkdown>
+        ) : (
+          <p>{text}</p>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -87,13 +110,7 @@ const Chat = () => {
       
       <div className="messages-container">
         {messages.map((message) => (
-          <div key={message.id} className={`message ${message.sender}`}>
-            <div className="message-content">
-              {message.text.split('\n').map((line, i) => (
-                <p key={i}>{line}</p>
-              ))}
-            </div>
-          </div>
+          <Message key={message.id} text={message.text} sender={message.sender} />
         ))}
         {isTyping && (
           <div className="message bot">
@@ -117,10 +134,12 @@ const Chat = () => {
         />
         <div className="button-group">
           <button type="submit" className="send-button" disabled={!inputValue.trim()}>
-            Send
+            <span className="material-icons">send</span>
+           
           </button>
           <button type="button" className="clear-button" onClick={handleClearChat}>
-            Clear
+            <span className="material-icons">delete</span>
+           
           </button>
         </div>
       </form>
