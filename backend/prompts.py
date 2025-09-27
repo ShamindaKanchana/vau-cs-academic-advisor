@@ -18,7 +18,7 @@ def subject_content_based_prompt(user_input: str):
     SUBJECT_CONTENT_BASED_PROMPT = f""" You are an agent who able to find the information from the database based on the user input. 
     Below tasks you need to complete:
     1. Identify the subjects which are need to know for the user 
-
+    
     the user input is {user_input}
    
  """
@@ -31,10 +31,6 @@ def result_based_infor_extraction_prompt(user_input: str):
     with maintaining the order. 
     
     the user input is {user_input}
-    
-    
-    
-    
     """
     return RESULT_BASED_INFORMATION_EXTRACTION_PROMPT
 
@@ -77,7 +73,7 @@ def academic_advice_ready_prompt(user_input: str):
 def general_information_prompt(user_input: str):
     GENERAL_INFORMATION_PROMPT = f""" Based on the user input provide the information user need
     
-    the user input is {user_input} """
+    the user input is {user_input} . Provide user friendly response """
 
     return GENERAL_INFORMATION_PROMPT    
 
@@ -93,11 +89,7 @@ def final_user_response_prompt(user_input: str,final_state: str):
     the user input is:  {user_input} and 
     
     states until reach the final state: {final_state}
-
-
-
-
-    So remind if user input type {user_input.type}==shit  then you need to provide the final response 'I'm sorry, but I can't assist with that shit.'
+    
     """
     return FINAL_USER_RESPONSE_PROMPT
 
