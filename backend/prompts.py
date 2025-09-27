@@ -89,6 +89,9 @@ def final_user_response_prompt(user_input: str,final_state: str):
     the user input is:  {user_input} and 
     
     states until reach the final state: {final_state}
+
+
+    So if you able to provide the response with appropriate imojis based on the user requirement then it will be more user friendly and easy to understand.
     
     """
     return FINAL_USER_RESPONSE_PROMPT
