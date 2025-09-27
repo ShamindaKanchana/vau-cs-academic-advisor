@@ -96,33 +96,33 @@ class DatabaseRetriever:
             logger.error(f"❌ Query engine initialization failed: {str(e)}")
             raise
 
-    def query(self, query_text: str) -> Dict[str, Any]:
-        """Execute a natural language query against the database."""
+    def query(self, query_text: str, raw: bool = False):
         if not self.query_engine:
             raise ValueError("Query engine not initialized")
 
-        try:
-            response = self.query_engine.query(query_text)
-            
-            # Extract SQL query and result
-            sql_query = ""
-            if hasattr(response, 'metadata') and response.metadata:
-                sql_query = str(response.metadata.get("sql_query", ""))
-            
+        response = self.query_engine.query(query_text)
+        sql_query = response.metadata.get("sql_query", "")
+
+        if raw and sql_query:
+            # Run Gemini-generated SQL directly
+            with self.engine.connect() as conn:
+                result = conn.execute(text(sql_query))
+                rows = [dict(row._mapping) for row in result.fetchall()]
+            return {
+                "success": True,
+                "sql_query": sql_query,
+                "result": rows,
+                "error": None
+            }
+        else:
             return {
                 "success": True,
                 "sql_query": sql_query,
                 "result": str(response),
-                "error": None,
+                "error": None
             }
-        except Exception as e:
-            logger.error(f"❌ Query execution failed: {str(e)}")
-            return {
-                "success": False, 
-                "sql_query": "", 
-                "result": None, 
-                "error": str(e)
-            }
+            
+
 
     def get_available_tables(self) -> List[str]:
         """Get list of all available tables in the database."""
@@ -149,6 +149,10 @@ class DatabaseRetriever:
     def is_initialized(self) -> bool:
         """Check if retriever is properly initialized."""
         return self.query_engine is not None and self.engine is not None
+
+
+
+    
 
 
 # Simple usage example
