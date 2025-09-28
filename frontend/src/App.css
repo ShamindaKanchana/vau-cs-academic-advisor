@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   /* background-color: #f0f2f5; */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -12,12 +12,33 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Footer styles */
+.app-footer {
+  text-align: center;
+  color: rgb(217, 202, 202);
+  padding: 1rem;
+  font-size: 0.9rem;
+  background-color: #00478d;
+  border-top: 1px solid #165594;
+  width: 100%;
+}
+
+.app-footer p {
+  margin: 0;
+  padding: 0;
+}
+
+.app-footer strong {
+  color: rgb(217, 202, 202);
+}
+
 /* App container should not constrain the chat */
 .app {
   max-width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  position: relative;
   justify-content: center;
   background: linear-gradient(135deg, #021464 0%, #764ba2 100%); 
   min-height: 100vh;

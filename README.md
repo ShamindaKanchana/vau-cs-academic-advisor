@@ -42,6 +42,10 @@ VAU-CS Academic Advisor is an intelligent chatbot system designed to assist stud
 
 ## 🏗️ Architecture
 
+### High-Level Architecture
+
+![Architecture Diagram](academic_bot_plan.drawio.png)
+
 ### Frontend (React)
 - Built with React 18 and Vite
 - Modern UI with Material Icons
