@@ -10,146 +10,48 @@ def insert_some_modules():
         # Define your dummy data - List of subjects for Computer Science
         modules = [
             {
-                "course_code": "CSC1113",
-                "course_title": "Foundation of Computer Science",
-                "year": 1,
-                "semester": 1,
-                "description": """{
-  "Introduction to Computer Systems": {
-    "Evolution of Computers": "Overview of the historical development of computers from early mechanical devices to modern systems.",
-    "Classification of Modern Computers": "Categorization of computers based on size, capability, and usage, such as supercomputers, mainframes, personal computers, and embedded systems."
-  },
-  "Representation of Data": {
-    "Number Systems": "Study of different number systems like binary, decimal, octal, and hexadecimal used in computing.",
-    "Binary Arithmetic": "Operations such as addition, subtraction, multiplication, and division in binary.",
-    "Signed Integer Representation": "Methods to represent positive and negative integers, including sign-magnitude, one’s complement, and two’s complement.",
-    "Floating Point Representation": "Representation of real numbers in computers using floating-point notation, including IEEE 754 standard."
-  },
-  "Computer Hardware": {
-    "Input/Output Devices": "Devices for user interaction with computers, such as keyboards, mice, monitors, and printers.",
-    "CPU Organization": "Structure and functioning of the Central Processing Unit, including ALU, control unit, and registers.",
-    "Storage Devices": "Primary and secondary storage devices like RAM, hard drives, SSDs, and optical media.",
-    "Expansion Cards and System Interfaces": "Components like graphics cards, sound cards, and interfaces such as USB, PCIe, and SATA."
-  },
-  "Computer Software": {
-    "Operating Systems": "Software that manages hardware and provides services for applications, e.g., Windows, Linux, macOS.",
-    "Utility Programs": "Tools for system maintenance, such as antivirus software, disk defragmenters, and backup utilities.",
-    "Application Software": "Programs designed for end-users, including word processors, browsers, and games.",
-    "Concepts of Programming": "Fundamentals of writing code, including algorithms, data structures, and programming paradigms.",
-    "Web-based, Desktop, and Mobile Applications": "Differences and characteristics of applications designed for web browsers, desktop environments, and mobile devices."
-  },
-  "Computer Network": {
-    "Use of Network": "Purpose and applications of networks for communication, resource sharing, and data transfer.",
-    "Communication Media": "Wired (e.g., Ethernet, fiber optics) and wireless (e.g., Wi-Fi, Bluetooth) media for data transmission.",
-    "Network Devices": "Hardware like routers, switches, hubs, and access points used in networking.",
-    "Types of Networks": "Classification of networks like LAN, WAN, MAN, PAN, and VPN based on scope and functionality."
-  },
-  "System Maintenance and Troubleshooting": {
-    "PC Maintenance Tools": "Software and hardware tools for maintaining system performance, such as diagnostic utilities and cleaning kits.",
-    "Troubleshooting Guidelines": "Systematic approaches to diagnose and resolve hardware and software issues.",
-    "Upgrading a System": "Procedures for upgrading hardware components (e.g., RAM, CPU) and software updates."
-  },
-  "Practical": {
-    "Basic Commands of Windows and Linux": "Introduction to command-line operations in Windows (e.g., CMD, PowerShell) and Linux (e.g., Bash).",
-    "Introduction to Word Processing": "Basics of creating and editing documents using software like Microsoft Word or Google Docs.",
-    "Spreadsheet Software": "Fundamentals of spreadsheet applications like Microsoft Excel or Google Sheets for data organization and analysis.",
-    "Presentation Software": "Creating and managing presentations using tools like Microsoft PowerPoint or Google Slides."
-  }
-}""",
-  "credit_value": 3},
-{
-  "course_code": "CSC1123",
-  "course_title": "Introduction to Programming",
-  "year": 1,
-  "semester": 1,
-  "description": """ 
-  {
-  "Introduction to Computer Systems": {
-    "Evolution of Computers": "Overview of the historical development of computers from early mechanical devices to modern systems.",
-    "Classification of Modern Computers": "Categorization of computers based on size, capability, and usage, such as supercomputers, mainframes, personal computers, and embedded systems."
-  },
-  "Representation of Data": {
-    "Number Systems": "Study of different number systems like binary, decimal, octal, and hexadecimal used in computing.",
-    "Binary Arithmetic": "Operations such as addition, subtraction, multiplication, and division in binary.",
-    "Signed Integer Representation": "Methods to represent positive and negative integers, including sign-magnitude, one’s complement, and two’s complement.",
-    "Floating Point Representation": "Representation of real numbers in computers using floating-point notation, including IEEE 754 standard."
-  },
-  "Computer Hardware": {
-    "Input/Output Devices": "Devices for user interaction with computers, such as keyboards, mice, monitors, and printers.",
-    "CPU Organization": "Structure and functioning of the Central Processing Unit, including ALU, control unit, and registers.",
-    "Storage Devices": "Primary and secondary storage devices like RAM, hard drives, SSDs, and optical media.",
-    "Expansion Cards and System Interfaces": "Components like graphics cards, sound cards, and interfaces such as USB, PCIe, and SATA."
-  },
-  "Computer Software": {
-    "Operating Systems": "Software that manages hardware and provides services for applications, e.g., Windows, Linux, macOS.",
-    "Utility Programs": "Tools for system maintenance, such as antivirus software, disk defragmenters, and backup utilities.",
-    "Application Software": "Programs designed for end-users, including word processors, browsers, and games.",
-    "Concepts of Programming": "Fundamentals of writing code, including algorithms, data structures, and programming paradigms.",
-    "Web-based, Desktop, and Mobile Applications": "Differences and characteristics of applications designed for web browsers, desktop environments, and mobile devices."
-  },
-  "Computer Network": {
-    "Use of Network": "Purpose and applications of networks for communication, resource sharing, and data transfer.",
-    "Communication Media": "Wired (e.g., Ethernet, fiber optics) and wireless (e.g., Wi-Fi, Bluetooth) media for data transmission.",
-    "Network Devices": "Hardware like routers, switches, hubs, and access points used in networking.",
-    "Types of Networks": "Classification of networks like LAN, WAN, MAN, PAN, and VPN based on scope and functionality."
-  },
-  "System Maintenance and Troubleshooting": {
-    "PC Maintenance Tools": "Software and hardware tools for maintaining system performance, such as diagnostic utilities and cleaning kits.",
-    "Troubleshooting Guidelines": "Systematic approaches to diagnose and resolve hardware and software issues.",
-    "Upgrading a System": "Procedures for upgrading hardware components (e.g., RAM, CPU) and software updates."
-  },
-  "Practical": {
-    "Basic Commands of Windows and Linux": "Introduction to command-line operations in Windows (e.g., CMD, PowerShell) and Linux (e.g., Bash).",
-    "Introduction to Word Processing": "Basics of creating and editing documents using software like Microsoft Word or Google Docs.",
-    "Spreadsheet Software": "Fundamentals of spreadsheet applications like Microsoft Excel or Google Sheets for data organization and analysis.",
-    "Presentation Software": "Creating and managing presentations using tools like Microsoft PowerPoint or Google Slides."
-  }
-}""",
-"credit_value":3},
-{
-  "course_code": "ACU1113",
-  "course_title": "English Language I",
-  "year": 1,
-  "semester": 1,
-  "description": """ 
-  {
-  "Reading": {
-    "Reading Skills": "Techniques to improve comprehension and speed when reading texts.",
-    "Identifying Main Points": "Recognizing key ideas and themes in a passage or text.",
-    "Understanding Vocabulary": "Decoding and interpreting words in context to enhance comprehension."
-  },
-  "Writing": {
-    "Introducing the Mechanics of Writing": "Fundamentals of grammar, punctuation, and sentence structure.",
-    "Introducing Vocabulary in and Around the University Environment": "Learning academic and campus-related terminology.",
-    "Developing Sentences and Paragraphs": "Crafting coherent and cohesive sentences and paragraphs.",
-    "Transferring Graphic, Pictorial Information into Writing": "Describing charts, graphs, or images in written form.",
-    "Preparing to Write an Essay or a Project": "Planning and organizing content for essays or academic projects."
-  },
-  "Speaking": {
-    "Describing Objects": "Explaining the characteristics, functions, or appearance of objects clearly.",
-    "Interviewing": "Conducting and responding to interviews with effective communication.",
-    "Giving Instructions": "Providing clear, step-by-step directions or guidance.",
-    "Making Short Speeches": "Delivering concise, structured oral presentations."
-  },
-  "Listening": {
-    "Listening to Discriminate Sounds": "Identifying and distinguishing specific sounds or phonetic elements.",
-    "Listening for Specific Information": "Focusing on key details or data in spoken content.",
-    "Listening and Responding to Telephone Conversation": "Understanding and engaging in phone-based communication effectively."
-  },
-  "Language Structures": {
-    "Introducing Structures": "Learning fundamental grammatical structures for effective communication.",
-    "Question Formation": "Constructing different types of questions (e.g., yes/no, wh-questions).",
-    "Articles": "Using definite (the) and indefinite (a/an) articles appropriately.",
-    "Prepositions": "Understanding and applying prepositions for time, place, and direction.",
-    "Pronouns": "Using personal, possessive, reflexive, and relative pronouns correctly.",
-    "Quantifiers": "Applying terms like some, any, much, many, and few to indicate quantity.",
-    "Word Class": "Identifying and using parts of speech (nouns, verbs, adjectives, adverbs, etc.).",
-    "Active and Passive": "Understanding and using active and passive voice constructions.",
-    "Topics to Be Selected from Student’s Field of Interest": "Exploring language structures relevant to students' academic or personal interests.",
-    "Submission of Individual Projects": "Completing and presenting individual assignments based on learned concepts."
-  }
-}""",
-"credit_value": 3}
+                "course_code": "AMA2213",
+                "course_title": "Mechanics",
+                "year": 2,
+                "semester": 2,
+                "description": """Introduction: Kinematics, Dynamics and statics, Foundation of mechanics and mathematical models, Newton’s laws, Force and mass, Work, Power, Kinetic energy, Conservative force field, Potential energy, Conservation of energy, Impulse, Conservation of momentum and non-conservative forces. Motion in a uniform field: Uniformly accelerated motion, Freely falling bodies, Potential and potential energy in a uniform force field, Motion in a resisting medium, Pulley motion and inclination motion. Harmonic Oscillator: Simple harmonic oscillator, Amplitude, period and frequency of simple harmonic motion, Energy of a simple harmonic oscillator, Damped harmonic oscillator, Over-damped, Critically damped and under-damped motion, Simple pendulum. Gravitation: Basic concepts of gravitation and formulas, Field and potential, Rocket motion, Equation of rocket motion, Relative-motion analysis. Motion of a particle on a curve: Motion of a particle on a smooth vertical curve, Tangential equation of the motion, Normal equation of the motion. Flexible chains and strings: Catenary, Equation of common catenary, Cartesian equation of common catenary, Properties of catenary, Equations of equilibrium of a string, Catenary of uniform strength. Shear force and Bending moment: Types of beams and loads, Internal stress in a rigid body, Concentrated and distributed forces, Relationship between bending moment and shearing force and Diagrams.""",
+                "credit_value":3},
+            {
+                "course_code": "STA2213",
+                "course_title": "Sampling Theory",
+                "year": 2,
+                "semester": 2,
+                "description": """Introduction: Population, Sample, Sampling Design, Estimators. Simple Random Sampling: Simple Random Sampling With Replacement, Simple Random Sampling Without Replacement, Estimation of population mean and total under SRS, Determination of sample size under SRS, Estimation of Population Proportion. Stratified Sampling: Estimation of population mean and total under Stratified Sampling, Determination of sample size under Stratified Sampling, Allocations. Ratio estimator: Bias and Mean Square Error, Estimation of Variance, Confidence Interval, Ratio Estimator in Stratified Random Sampling. Difference estimator and Regression estimator: Difference Estimator, Difference Estimator in Stratified Random Sampling, Regression Estimator, Regression Estimators in Stratified Sampling. Systematic Sampling: Estimation of population mean and total under Systematic Sampling, Comparison of Systematic Sampling, Simple Random Sampling and Stratified Random Sampling for Different Types of Populations, Circular Systematic Sampling. Cluster Sampling: Estimation of Population Mean, Estimation of Efficiency by a Cluster Sample.""",
+                "credit_value":3},
+            {
+                "course_code": "CSC2212",
+                "course_title": "Data Comm & Networks",
+                "year": 2,
+                "semester": 2,
+                "description": """Introduction: Data Communication concepts, Networks, Internet, Protocols and Standards, Topology, Transmission mode, Categories of network, Applications. Signals: Periodic and aperiodic signals, Analog signals, Time and frequency domains, Frequency spectrum and bandwidth, Digital signals, Analog and digital data. Network Models: Layered Task, OSI Model, TCP/IP Model. Transmission Media: Guided media, Unguided media, Transmission impairment, Signal propagation, Digital Modulation and Multiplexing. Network Devices: NIC, Switches, Bridges, Hub and Routers, network design and implementation.""",
+                "credit_value":2},
+            {
+                "course_code": "CSC2222",
+                "course_title": "Software Eng",
+                "year": 2,
+                "semester": 2,
+                "description": """Software Processes: Introduction to software process models, Activities within software life-cycles, Evaluation of software process models. Requirements Engineering: Properties of requirements, Software requirements elicitation, Describing system data, Functional requirements, Non-functional requirements. Software Design: Design Models, class, architectural and interface designs. Different types of architecture, levels of abstraction, separation of concerns, information hiding, coupling and cohesion, re-use of standard structures. Software Testing: Verification and validation concepts, Testing types, Testing fundamentals. Unit, integration, validation, and system testing, Test plan creation and test case generation, Black-box and white-box testing techniques. Software Evolution: Software development in the context of large, pre-existing code bases, Software change, Refactoring, Software evolution, Characteristics of maintainable software, Re-engineering systems, Software reuse.""",
+                "credit_value":2},
+            {
+                "course_code": "CSC2234",
+                "course_title": "Numerical Computing",
+                "year": 2,
+                "semester": 2,
+                "description": """Error analysis: Computer number representation, round off errors, truncation errors, loss of significance. Solution of equation of one variable: Bisection method, the method of false-position, fixed point iteration, convergence of iterative methods, Aiken’s ∆2 process, order of convergence, Newton-Raphson method, convergence of Newton-Raphson iteration, Secant method, Order of Secant method. Roots of Polynomials: Computing with polynomials, Newton method to compute the roots of a polynomial, Muller’s method, Bairstow’s method for quadratic factors. Interpolation: Interpolation and Lagrange polynomial, Errors in Interpolation, Divided Difference, Interpolation with equally spaced points, Interpolation with cubic spline. Numerical Differentiation: Numerical Differentiation, Derivatives from difference table, Derivation of derivative formula using Lagrange’s Interpolation formula, Richardson’s Extrapolation, five point’s formula. Numerical Integration: Trapezodial Rule and Simpon’s Rule, Round off error in Trapezodial Rule and Simpon’s Rules, adaptive quadrature method, Gaussian quadrature. Numerical solution of system of linear equation: Direct method: Gaussion Elimination, pivoting strategies, operational count, Matrix factorization, compact schemes (Crouts, Choleski), Tridiagonal system, stability and Ill conditioning, Vector and matrix norms, condition number. Jacobi, Gauss-Seidal methods, Convergence of Iteration methods, Successive over relaxation method, Krylov subspace and conjugate gradient methods. Solution of Ordinary Differential Equations: Derivation of method, One step method, Runge-Kutta (R-K) method, Derivation of R-K methods, Euller’s method and Errors Estimation, Linear Multistep methods, Adams methods and predictor-corrector methods, Stability of Numerical methods. Practical: Practical implementation of the above concepts using Mathematical software.""",
+                "credit_value":4},
+            {
+                "course_code": "ACU2212",
+                "course_title": "Comm & Soft Skills",
+                "year": 2,
+                "semester": 2,
+                "description": """Introduction: Communication and soft skills, Patterns and process, Downward and Upward communication, Horizontal and vertical communication, One-way and two-way communication, Multi-directional communication, Communications for Management, Efficiency in communication. Forms and Levels: Oral and written communication, Verbal and non-verbal communication, Para-language Code, Signals, Symbols, Icons, Gestures, Active Listening and Speaking, Writing for your people, Publishing and Editing, Inter personal communication, Public communication. Planning and Organization of communication: Establishment of Objective, Information search, Identification, Collection, Organization and presentation, Analytical skills, Resource allocation, Delegation, Timing, Coordination. Motivational Communication: Motivation, Instrumental and inspirational, Internal and external, Instructions, Reporting, Recommendations, Performance Appraisal and Styles of Control. Staffing and Leadership: Interview Techniques, Communication in Training, Development, Feedback, and Industrial Relations, Supportive Leadership, Directive leadership, Achievement Oriented leadership and Participative leadership. Public Relations, Marketing Communication: Negotiating and conflict resolution skills: Opening the process, Negotiations types, Conduct of Negotiation and problem solving skills, balancing personal and professional life, Communication during Negotiations, Bargaining, Teamwork, Flexibility and adaptation, Time management, Decisiveness, Responsibility and Accountability.""",
+                "credit_value":0}
+           
         
         ]
 
