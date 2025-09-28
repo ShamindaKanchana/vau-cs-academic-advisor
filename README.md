@@ -3,7 +3,33 @@
 ## Project Overview
 VAU-CS Academic Advisor is an intelligent chatbot system designed to assist students with academic inquiries. It leverages Google's Gemini AI to provide personalized academic guidance, course information, and study advice through a user-friendly chat interface.
 
-## ✨ Features
+> **Current Status**: The system currently contains course data for the first two years of both BSc (Hons) in Computer Science and BSc Applied Mathematics and Computing programs. The remaining years' data will be added in future updates.
+
+> **Note**: This is an experimental system that's continuously being improved. We're actively testing different input scenarios and refining the responses based on the outcomes to enhance the overall user experience and accuracy.
+
+## ✨ Current Features
+- **Program Coverage**:
+  - BSc (Hons) in Computer Science (Years 1-2)
+  - BSc Applied Mathematics and Computing (Years 1-2)
+  - *Note: Remaining years will be added in future updates*
+
+- **Interactive Chat Interface**: Modern, responsive UI with markdown support
+- **Intelligent Query Handling**: Understands and processes various academic queries
+- **State Management**: Uses LangGraph for sophisticated conversation flow control
+- **Database Integration**: Fetches course and module information from a MySQL database
+- **Multi-modal Support**: Handles different types of academic inquiries:
+  - Course content queries
+  - Module information
+  - Academic advice
+  - General university information
+
+## 🚧 Development Roadmap
+- [ ] Expand course database to include all academic years
+- [ ] Implement more sophisticated conversation flows
+- [ ] Add support for additional academic programs
+- [ ] Enhance response accuracy through continuous testing
+- [ ] Implement user feedback mechanism for system improvement
+- [ ] Prepare for production deployment with proper monitoring and scaling
 - **Interactive Chat Interface**: Modern, responsive UI with markdown support
 - **Intelligent Query Handling**: Understands and processes various academic queries
 - **State Management**: Uses LangGraph for sophisticated conversation flow control
