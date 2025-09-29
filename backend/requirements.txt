@@ -1,15 +1,27 @@
+# Core dependencies
 langgraph==0.0.10
+langchain-google-genai>=0.0.8,<0.1.0  # Compatible version with langgraph
 python-dotenv==1.0.0
 grpcio==1.60.0
+
+# Flask and related
 flask==2.3.3
 flask-cors==4.0.0
-llama-index==0.14.3
-sqlalchemy==2.0.43
-langchain-google-genai==2.1.12
-llama-index-llms-gemini==0.6.1
-pymysql==1.0.2
-gunicorn==21.2.0
 Werkzeug==2.3.7
 Jinja2==3.1.2
 itsdangerous==2.1.2
 click==8.1.7
+
+gunicorn==21.2.0
+
+# Database
+sqlalchemy==2.0.43
+pymysql==1.0.2
+
+# LlamaIndex and related
+llama-index>=0.9.0,<0.10.0  # Using a more stable version
+llama-index-llms-gemini==0.6.1
+
+# Ensure compatible versions of langchain packages
+langchain-core>=0.1.8,<0.2.0
+langchain-community>=0.0.10,<0.1.0
