@@ -1,27 +1,27 @@
-# Core dependencies
-langgraph==0.0.10
-langchain-google-genai>=0.0.8,<0.1.0  # Compatible version with langgraph
-python-dotenv==1.0.0
-grpcio==1.60.0
+# Core dependencies with relaxed version constraints
+langgraph
+langchain-google-genai
+python-dotenv
+grpcio
 
 # Flask and related
-flask==2.3.3
-flask-cors==4.0.0
-Werkzeug==2.3.7
-Jinja2==3.1.2
-itsdangerous==2.1.2
-click==8.1.7
+flask
+flask-cors
+Werkzeug
+Jinja2
+itsdangerous
+click
 
-gunicorn==21.2.0
+gunicorn
 
 # Database
-sqlalchemy==2.0.43
-pymysql==1.0.2
+sqlalchemy
+pymysql
 
 # LlamaIndex and related
-llama-index>=0.9.0,<0.10.0  # Using a more stable version
-llama-index-llms-gemini==0.6.1
+llama-index
+llama-index-llms-gemini
 
-# Ensure compatible versions of langchain packages
-langchain-core>=0.1.8,<0.2.0
-langchain-community>=0.0.10,<0.1.0
+# LangChain
+langchain-core
+langchain-community
