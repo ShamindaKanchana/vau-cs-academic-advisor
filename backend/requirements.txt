@@ -1,41 +1,34 @@
-# Core dependencies
+# Core AI & Graph
 langgraph==0.6.7
+langchain-core==0.3.76
 langchain-google-genai==2.1.12
-python-dotenv==1.0.1
-grpcio==1.75.0
 
-# Flask and related
+# Flask & Web Server
 flask==3.1.2
 flask-cors==6.0.1
 Werkzeug==3.1.3
 Jinja2==3.1.6
 itsdangerous==2.2.0
 click==8.3.0
-
 gunicorn==21.2.0
 
 # Database
 sqlalchemy==2.0.43
 pymysql==1.1.2
 
-# LlamaIndex and related
-llama-index==0.14.2
-llama-index-llms-gemini==0.6.1
+# LlamaIndex
 llama-index-core==0.14.2
+llama-index-llms-gemini==0.6.1
 llama-index-embeddings-gemini==0.4.1
-
-# LangChain
-langchain-core==0.3.76
-langchain-community==0.0.29
 
 # Google AI
 google-generativeai==0.8.5
 google-auth==2.40.3
+grpcio==1.75.0
 
-# Other dependencies
-pillow==10.4.0
-dataclasses-json==0.6.7
-typing-inspect==0.9.0
-numpy==2.3.3
+# Essential Utilities
+python-dotenv==1.1.1
 pydantic==2.11.9
 pydantic_core==2.33.2
+typing-extensions==4.15.0
+requests==2.32.5
