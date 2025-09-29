@@ -1,4 +1,4 @@
-# Core AI & Graph
+# Core AI & Graph - UPDATED VERSIONS
 langgraph==0.6.7
 langchain-core==0.3.76
 langchain-google-genai==2.1.12
@@ -16,7 +16,7 @@ gunicorn==21.2.0
 sqlalchemy==2.0.43
 pymysql==1.1.2
 
-# LlamaIndex
+# LlamaIndex - UPDATED VERSIONS
 llama-index-core==0.14.2
 llama-index-llms-gemini==0.6.1
 llama-index-embeddings-gemini==0.4.1
@@ -32,3 +32,7 @@ pydantic==2.11.9
 pydantic_core==2.33.2
 typing-extensions==4.15.0
 requests==2.32.5
+
+# ADD THESE TO RESOLVE CONFLICTS
+langsmith==0.4.31
+jsonpatch==1.33
